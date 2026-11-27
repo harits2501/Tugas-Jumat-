@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Buku Tamu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="split">
+
+    <section class="hero">
+      <div class="brand">
+        <span class="logo">BT</span>
+        <span>SMK Negeri 9 Medan</span>
+      </div>
+
+      <div>
+        <h1>Tinggalkan pesan untuk kami</h1>
+        <p>Ceritakan kesan, saran, atau sekadar sapaan. Pesanmu akan dibaca langsung oleh admin.</p>
+      </div>
+
+      <div class="bubble">
+        <span class="avatar a0" style="flex:none;width:40px;height:40px;font-size:16px">A</span>
+        <div>
+          <b>Amalia</b>
+          <span>Websitenya bagus! Terima kasih.</span>
+        </div>
+      </div>
+    </section>
+
+    <main class="panel">
+      <div class="form-box">
+        <h2>Isi buku tamu</h2>
+        <p class="lead">Semua kolom wajib diisi.</p>
+
+        <!-- Data dikirim ke bukutamu.php dengan metode POST -->
+        <form action="bukutamu.php" method="post">
+          <label for="nama">Nama</label>
+          <input type="text" id="nama" name="nama" maxlength="50" placeholder="Nama lengkap" autocomplete="name" required>
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" maxlength="80" placeholder="nama@email.com" autocomplete="email" required>
+
+          <label for="komentar">Komentar</label>
+          <textarea id="komentar" name="komentar" rows="6" maxlength="500" placeholder="Tulis pesanmu di sini" required></textarea>
+          <div class="hitung" id="hitung" aria-live="polite">0 / 500</div>
+
+          <div class="aksi">
+            <button type="submit" class="btn full">Simpan pesan</button>
+            <a class="tautan-bawah redup" href="login.php">Masuk sebagai admin</a>
+          </div>
+        </form>
+      </div>
+    </main>
+
+  </div>
+
+  <script>
+    // Penghitung karakter komentar
+    var kolom = document.getElementById("komentar");
+    var hitung = document.getElementById("hitung");
+    function perbarui() { hitung.textContent = kolom.value.length + " / " + kolom.maxLength; }
+    kolom.addEventListener("input", perbarui);
+    perbarui();
+  </script>
+</body>
+</html>
